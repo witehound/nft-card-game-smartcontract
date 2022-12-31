@@ -1,9 +1,9 @@
-import dotenv from "dotenv";
-import "@nomiclabs/hardhat-ethers";
+require("@nomiclabs/hardhat-ethers");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
-export default {
+module.exports = {
   solidity: {
     version: "0.8.16",
     settings: {
