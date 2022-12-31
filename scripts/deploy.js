@@ -1,10 +1,9 @@
-import { ethers } from "hardhat";
-import console from "console";
+const { ethers } = require("hardhat");
 
 const _metadataUri =
   "https://gateway.pinata.cloud/ipfs/https://gateway.pinata.cloud/ipfs/QmX2ubhtBPtYw75Wrpv6HLb1fhbJqxrnbhDo1RViW3oVoi";
 
-async function deploy(name) {
+async function deploy(name, ...params) {
   const contractFactory = await ethers.getContractFactory(name);
 
   return await contractFactory.deploy(...params).then((f) => f.deployed());
