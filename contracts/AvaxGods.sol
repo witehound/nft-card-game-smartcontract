@@ -294,7 +294,7 @@ contract AVAXGods is ERC1155, Ownable, ERC1155Supply {
             address(0) // winner address; empty until battle ends
         );
 
-        uint256 _id = battles.length;
+        uint256 _id = battles.length + 1;
         battleInfo[_name] = _id;
         battles.push(_battle);
 
