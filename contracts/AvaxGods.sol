@@ -120,7 +120,7 @@ contract AVAXGods is ERC1155, Ownable, ERC1155Supply {
         returns (Battle memory)
     {
         require(isBattle(_name), "Battle doesn't exist!");
-        return battles[battleInfo[_name] - 1];
+        return battles[battleInfo[_name]];
     }
 
     function getAllBattles() public view returns (Battle[] memory) {
@@ -131,7 +131,7 @@ contract AVAXGods is ERC1155, Ownable, ERC1155Supply {
         private
     {
         require(isBattle(_name), "Battle doesn't exist");
-        battles[battleInfo[_name] - 1] = _newBattle;
+        battles[battleInfo[_name]] = _newBattle;
     }
 
     // Events
@@ -294,11 +294,15 @@ contract AVAXGods is ERC1155, Ownable, ERC1155Supply {
             address(0) // winner address; empty until battle ends
         );
 
-        uint256 _id = battles.length + 1;
+        uint256 _id = battles.length;
         battleInfo[_name] = _id;
         battles.push(_battle);
 
         return _battle;
+    }
+
+    function getlength() external view returns (uint256) {
+        return battles.length;
     }
 
     /// @dev Player joins battle
